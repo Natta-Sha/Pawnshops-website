@@ -1,8 +1,57 @@
-/* font-family: 'Roboto Mono', monospace; */
+:root {
+  --branding-color: #1d8c99;
+  --secondary-color: white;
+  --branding2-color: #0d646d;
+  --base-color: black;
+  --default-font-family: "Roboto Mono", monospace;
+  --p-font-size: 20px;
+  --h2-font-size: 38px;
+  --h1-font-size: 48px;
+}
+
+body {
+  padding: 60px 60px;
+}
 
 h1 {
-  background-color: red;
-  font-family: "Roboto Mono", monospace;
+  font-size: var(--h1-font-size);
   font-weight: bold;
-  font-size: 16px;
+}
+
+h2 {
+  font-size: var(--h2-font-size);
+}
+
+li a {
+  text-decoration: none;
+  color: var(--base-color);
+}
+
+p,
+li {
+  font-size: var(--p-font-size);
+}
+
+ul {
+  list-style: none;
+}
+
+.main {
+  font-weight: normal;
+  font-family: var(--default-font-family);
+}
+
+.main h2 {
+  text-align: center;
+  border-style: solid;
+  background-color: var(--branding-color);
+  color: var(--secondary-color);
+}
+
+.main h2:hover {
+  color: var(--branding2-color);
+}
+
+.main p {
+  line-height: 4;
 }
