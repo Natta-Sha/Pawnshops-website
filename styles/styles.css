@@ -1,7 +1,8 @@
 :root {
-  --branding-color: #1d8c99;
+  --branding-base-color: #1d8c99;
+  --branding-light-color: #cbeef2;
+  --branding-dark-color: #0d646d;
   --secondary-color: white;
-  --branding2-color: #0d646d;
   --base-color: black;
   --default-font-family: "Roboto Mono", monospace;
   --p-font-size: 24px;
@@ -55,9 +56,12 @@ ul {
 .main p {
   line-height: 4;
 } */
+body {
+  background-color: var(--branding-light-color);
+}
 
 h2 {
-  color: var(--branding2-color);
+  color: var(--branding-dark-color);
   font-size: var(--h2-font-size);
   text-align: center;
 }
