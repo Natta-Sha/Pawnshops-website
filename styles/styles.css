@@ -4,12 +4,12 @@
   --branding2-color: #0d646d;
   --base-color: black;
   --default-font-family: "Roboto Mono", monospace;
-  --p-font-size: 20px;
-  --h2-font-size: 38px;
+  --p-font-size: 24px;
+  --h2-font-size: 42px;
   --h1-font-size: 48px;
 }
 
-body {
+/* body {
   padding-top: 60px;
 }
 
@@ -54,4 +54,14 @@ ul {
 
 .main p {
   line-height: 4;
+} */
+
+h2 {
+  color: var(--branding2-color);
+  font-size: var(--h2-font-size);
+  text-align: center;
+}
+
+p {
+  font-size: var(--p-font-size);
 }
