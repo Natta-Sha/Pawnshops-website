@@ -4,6 +4,7 @@
   --branding-dark-color: #0d646d;
   --secondary-color: white;
   --base-color: black;
+  --additional-color: #a643bc;
   --default-font-family: "Roboto Mono", monospace;
   --p-font-size: 22px;
   --h2-font-size: 40px;
@@ -20,7 +21,7 @@ h2 {
   text-align: center;
 }
 h2:hover {
-  color: var(--base-color);
+  color: var(--additional-color);
 }
 
 img {
