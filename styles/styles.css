@@ -29,7 +29,8 @@ img {
 }
 
 p,
-li {
+li,
+.page-link {
   font-size: var(--p-font-size);
 }
 
@@ -37,7 +38,9 @@ li {
   img {
     max-width: 100px;
   }
-  p {
+  p,
+  li,
+  .page-link {
     font-size: 16px;
   }
   h2 {
