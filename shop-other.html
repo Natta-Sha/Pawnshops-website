@@ -112,11 +112,7 @@
           </div>
         </div>
       </div>
-      <p class="card-text ratio ratio-16x9 shadow">
-        <iframe
-          src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQax9bYyuhMeXeGbT-Z1_RXzN06SIJB60JPXu0BeW5NAEB3MoARjtlIKka3oZrX4AY6hHMqkl4ONul5/pubhtml?gid=1285465208&amp;single=true&amp;widget=true&amp;headers=false"
-        ></iframe>
-      </p>
+      <div id="sheet" class="bg-white table-responsive"></div>
       <div class="row">
         <div class="col-md-12 mt-5">
           <div class="card shadow p-3 mb-5 bg-body rounded">
@@ -149,4 +145,58 @@
       </div>
     </nav>
   </body>
+  <script>
+    function getPrice(callback) {
+      fetch(
+        // 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRDoqjY0UKdmaAoQBJPZIyJsw44kywbmremZcgNbPUfNvU2mJeFtUrYVThKNny0u0sqDtkGF2uBdjCL/pubhtml?gid=1835152975&single=true'
+        // 'https://api.codetabs.com/v1/proxy?quest=https://docs.google.com/spreadsheets/d/e/2PACX-1vRDoqjY0UKdmaAoQBJPZIyJsw44kywbmremZcgNbPUfNvU2mJeFtUrYVThKNny0u0sqDtkGF2uBdjCL/pub?gid=1835152975&single=true&output=tsv',
+        "https://api.codetabs.com/v1/proxy?quest=https://docs.google.com/spreadsheets/d/e/2PACX-1vQax9bYyuhMeXeGbT-Z1_RXzN06SIJB60JPXu0BeW5NAEB3MoARjtlIKka3oZrX4AY6hHMqkl4ONul5/pub?gid=1285465208&single=true&output=tsv",
+        {
+          //mode: 'no-cors',
+          // mode: 'no-cors',
+          headers: {
+            accept: "text/csv",
+          },
+        }
+      )
+        .then((res) => {
+          // console.log(res)
+          return res.text();
+        })
+        .then((text) => {
+          // console.log(text)
+          callback(text);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+
+    let sheet = document.getElementById("sheet");
+    // console.log(sheet)
+
+    getPrice((text) => {
+      let result = [];
+      let lines = text.split("\n");
+      lines.forEach((line, index) => {
+        let fields = line.split("\t");
+
+        let row = fields.map((v) => `<td class="p3">${v}</td>`).join("");
+
+        result.push(
+          `<tr class="${index % 2 ? "odd" : "even"} ${
+            index === 0 ? "header" : ""
+          }" >${row}</tr>`
+        );
+      });
+
+      const table =
+        '<table class="table table-striped table-hover" ><tbody>' +
+        result.join("\n") +
+        "</tbody></table>";
+      //console.log(table)
+
+      sheet.innerHTML = table;
+    });
+  </script>
 </html>
