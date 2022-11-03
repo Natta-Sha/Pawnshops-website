@@ -1,0 +1,77 @@
+<html>
+  <head>
+    <title>Google sheet test</title>
+    <style>
+      .tbl {
+        width: 100%;
+      }
+      .header {
+        font-weight: bold;
+      }
+      .odd {
+        background-color: #fff;
+      }
+      .even {
+        background-color: #f5f5f5;
+      }
+      .p3 {
+        padding: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="sheet"></div>
+  </body>
+  <script>
+    function getPrice(callback) {
+      fetch(
+        // 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRDoqjY0UKdmaAoQBJPZIyJsw44kywbmremZcgNbPUfNvU2mJeFtUrYVThKNny0u0sqDtkGF2uBdjCL/pubhtml?gid=1835152975&single=true'
+        // 'https://api.codetabs.com/v1/proxy?quest=https://docs.google.com/spreadsheets/d/e/2PACX-1vRDoqjY0UKdmaAoQBJPZIyJsw44kywbmremZcgNbPUfNvU2mJeFtUrYVThKNny0u0sqDtkGF2uBdjCL/pub?gid=1835152975&single=true&output=tsv',
+        "https://api.codetabs.com/v1/proxy?quest=https://docs.google.com/spreadsheets/d/e/2PACX-1vQax9bYyuhMeXeGbT-Z1_RXzN06SIJB60JPXu0BeW5NAEB3MoARjtlIKka3oZrX4AY6hHMqkl4ONul5/pub?output=tsv",
+        {
+          //mode: 'no-cors',
+          // mode: 'no-cors',
+          headers: {
+            accept: "text/csv",
+          },
+        }
+      )
+        .then((res) => {
+          // console.log(res)
+          return res.text();
+        })
+        .then((text) => {
+          // console.log(text)
+          callback(text);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+
+    let sheet = document.getElementById("sheet");
+    // console.log(sheet)
+
+    getPrice((text) => {
+      let result = [];
+      let lines = text.split("\n");
+      lines.forEach((line, index) => {
+        let fields = line.split("\t");
+
+        let row = fields.map((v) => `<td class="p3">${v}</td>`).join("");
+
+        result.push(
+          `<tr class="${index % 2 ? "odd" : "even"} ${
+            index === 0 ? "header" : ""
+          }" >${row}</tr>`
+        );
+      });
+
+      const table =
+        '<table class="tbl" ><tbody>' + result.join("\n") + "</tbody></table>";
+      //console.log(table)
+
+      sheet.innerHTML = table;
+    });
+  </script>
+</html>
