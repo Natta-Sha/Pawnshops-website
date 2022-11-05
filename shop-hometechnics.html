@@ -33,7 +33,7 @@
 
     <title>Острів скарбів: продаж побутової техніки</title>
   </head>
-  <body>
+  <body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-lg bg-light sticky-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="/index.html">
@@ -108,10 +108,12 @@
         </div>
       </div>
 
-      <div id="sheet" class="bg-white table-responsive">></div>
+      <div id="sheet" class="bg-white table-responsive mb-5 rounded shadow">
+        >
+      </div>
     </div>
 
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg bg-light mt-auto">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
@@ -128,9 +130,10 @@
       >
         Не знайшли товар? Залишіть заявку, і ми з вами обов'язково зв'яжемось.
       </a>
+
       <a
-        class="btn btn-primary btn-lg mb-1 d-block d-md-none rounded-circle shadow"
-        style="width: 50px; height: 50px"
+        class="btn btn-primary btn-lg mb-1 me-1 d-block d-md-none rounded-circle shadow d-flex align-items-center"
+        style="width: 60px; height: 60px"
         href="/contact-us.html"
       >
         <i class="fa-solid fa-pen"></i>
