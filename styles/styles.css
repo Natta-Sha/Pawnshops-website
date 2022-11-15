@@ -15,7 +15,16 @@ font-family: 'Work Sans', sans-serif; */
 }
 
 body {
+  /* background-color: var(--branding-light-color); */
   background-color: var(--branding-light-color);
+
+  background-image: linear-gradient(135deg, #1d8c99 25%, transparent 25%),
+    linear-gradient(225deg, #1d8c99 25%, transparent 25%),
+    linear-gradient(45deg, #1d8c99 25%, transparent 25%),
+    linear-gradient(315deg, #1d8c99 25%, #cbeef2 25%);
+  background-position: 4px 0, 4px 0, 0 0, 0 0;
+  background-size: 8px 8px;
+  background-repeat: repeat;
 }
 
 h2 {
